@@ -1,4 +1,4 @@
-Prapackage com.jandres.practica1
+package com.jandres.practica1
 
 import androidx.constraintlayout.solver.SolverVariableValues
 
@@ -10,9 +10,3 @@ data class User(
     var birthday : String? = null,
     var city : String? = null
 )
-/*SOBRAN LOS METODOS GET Y SET CON DATA CLASS
-{
-    fun getEmail()
-    fun setEmail()
- }
- */

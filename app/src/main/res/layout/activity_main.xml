@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/seagreen"
+        android:backgroundTintMode="multiply"
         android:orientation="vertical"
         android:padding="16dp"
         tools:context=".MainActivity">
@@ -190,7 +192,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:entries="@array/city_list"/>
+                android:entries="@array/city_list" />
         </LinearLayout>
 
         <Button
@@ -198,8 +200,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/purple_700"
-            android:text="@string/save" />
+            android:backgroundTint="@color/dodgerblue"
+            android:text="@string/save"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/infoTextView"
