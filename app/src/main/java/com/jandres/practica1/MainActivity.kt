@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         mainBindig = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBindig.root)
 
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.mipmap.ic_launcher)
+
         var birthday: String = ""
 
         mainBindig.saveButton.setOnClickListener {
@@ -35,24 +38,35 @@ class MainActivity : AppCompatActivity() {
             val repassword = mainBindig.password2InputText.text.toString()
             val genre = if (mainBindig.maleRadioButton.isChecked) getString(R.string.male) else getString(R.string.female)
             var hobbies: MutableList<String> = mutableListOf()
-            hobbies.add(if (mainBindig.sportsCheckBox.isChecked) getString(R.string.sport) + ENTER else SPACE + ENTER)
-            hobbies.add(if (mainBindig.readCheckBox.isChecked) getString(R.string.read) + ENTER else SPACE + ENTER)
-            hobbies.add(if (mainBindig.eatCheckBox.isChecked) getString(R.string.eat) + ENTER else SPACE + ENTER)
-            hobbies.add(if (mainBindig.danceCheckBox.isChecked) getString(R.string.dance) + ENTER else SPACE + ENTER)
+            hobbies.add(if (mainBindig.sportsCheckBox.isChecked) getString(R.string.sport) + ENTER else EMPTY)
+            hobbies.add(if (mainBindig.readCheckBox.isChecked) getString(R.string.read) + ENTER else EMPTY)
+            hobbies.add(if (mainBindig.eatCheckBox.isChecked) getString(R.string.eat) + ENTER else EMPTY)
+            hobbies.add(if (mainBindig.danceCheckBox.isChecked) getString(R.string.dance) + ENTER else EMPTY)
             val city = mainBindig.citySpinner.selectedItem.toString()
 
 
-            if (email.isNotEmpty() and password.isNotEmpty() and repassword.isNotEmpty()) {
+            if (email.isNotEmpty() and password.isNotEmpty() and repassword.isNotEmpty() and birthday.isNotEmpty()) {
                 if (password == repassword) {
+                    mainBindig.emailInputLayout.error = null
+                    mainBindig.passwordInputLayout.error = null
                     mainBindig.password2InputLayout.error = null
+                    mainBindig.dateTextView.error = null
                     saveUser(email, password, genre, hobbies,birthday.toString(),city)
+                    cleanViews()
                 } else {
+                    mainBindig.emailInputLayout.error = null
+                    mainBindig.passwordInputLayout.error = getString(R.string.password_error)
                     mainBindig.password2InputLayout.error = getString(R.string.password_error)
                 }
             } else {
-                Toast.makeText(this, getString(R.string.email_error), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.incomplete_error), Toast.LENGTH_SHORT).show()
+                if (email.isEmpty()) mainBindig.emailInputLayout.error = getString(R.string.required)
+                if(password.isEmpty()) mainBindig.passwordInputLayout.error = getString(R.string.required)
+                if(repassword.isEmpty()) mainBindig.password2InputLayout.error = getString(R.string.required)
+                if (birthday.isEmpty()) mainBindig.dateTextView.error = getString(R.string.required)
+
             }
-            cleanViews()
+
         }
 
         val dateSetListener =
@@ -69,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         mainBindig.etBirthday.setOnClickListener{
+            mainBindig.dateTextView.error = null
             DatePickerDialog(
                 this,
                 dateSetListener,
@@ -90,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     private fun printUsersData() {
         var aux : String = ""
         for (user in users){
-            aux = aux + user.email + SPACE + user.genre + SPACE + user.hobbies + ENTER + user.birthday + ENTER + user.city + ENTER
+            aux = aux + user.email + ENTER + user.genre + ENTER + user.hobbies + ENTER + user.birthday + ENTER + user.city + ENTER
         }
         mainBindig.infoTextView.setText(aux)
     }

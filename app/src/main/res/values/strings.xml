@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Practica1</string>
+    <string name="app_name">Registro</string>
     <string name="title">Formulario</string>
     <string name="email">E-mail</string>
     <string name="password">Contraseña</string>
@@ -7,7 +7,9 @@
     <string name="save">Guardar</string>
     <string name="info">Nombre Usuario</string>
     <string name="email_error">Digite un correo</string>
-    <string name="password_error">Contraseñas no coinciden</string>
+    <string name="password_error">NO coinciden</string>
+    <string name="incomplete_error">Datos Incompletos</string>
+    <string name="required">Campo Requerido</string>
     <string name="genre">Gènero</string>
     <string name="male">Masculino</string>
     <string name="female">Femenino</string>
