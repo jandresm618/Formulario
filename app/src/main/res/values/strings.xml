@@ -16,6 +16,20 @@
     <string name="read">Leer</string>
     <string name="eat">Comer</string>
     <string name="dance">Bailar</string>
+    <string name="birthday">Fecha de Nacimiento:</string>
+    <string name="default_date">03/20/2021</string>
+    <string name="city">"Ciudad: "</string>
+    <string-array name="city_list">
+        <item>"Bogota D.C."</item>
+        <item>"Medellin"</item>
+        <item>"Cartagena"</item>
+        <item>"Cali"</item>
+        <item>"Barranquilla"</item>
+        <item>"Bucaramanga"</item>
+        <item>"Pasto"</item>
+        <item>"Pereira"</item>
+    </string-array>
+
 
 
 </resources>
